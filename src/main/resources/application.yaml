@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/VTransit
+    username: postgres
+    password: 112233
+    driver-class-name: org.postgresql.Driver
+
+server:
+  address: localhost
+  port: 8080
+
