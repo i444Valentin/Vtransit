@@ -1,4 +1,4 @@
-package org.company.entity.custom_types;
+package org.company.dao.custom_types;
 
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;

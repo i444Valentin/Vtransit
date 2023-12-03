@@ -1,11 +1,9 @@
-package org.company.entity;
+package org.company.dao.entity;
 
 
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Type;
-
-import java.util.List;
 
 @Entity
 @Table(name = "license")
@@ -23,7 +21,7 @@ public class License {
     private String region;
 
     @Column(name = "categories",length = 3)
-    @Type(value = org.company.entity.custom_types.StringArrayType.class)
+    @Type(value = org.company.dao.custom_types.StringArrayType.class)
     private String[] categories;
 
 

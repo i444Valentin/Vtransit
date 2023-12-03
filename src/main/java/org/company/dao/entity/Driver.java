@@ -1,4 +1,4 @@
-package org.company.entity;
+package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
