@@ -22,7 +22,7 @@ public class Driver {
     @Column(name="last_name",length = 25)
     private String lastName;
 
-    @Column(name = "birth_date")
+    @Column(name = "birth_day")
     private LocalDate birthDate;
 
     @Column(name="gender",length = 10)
