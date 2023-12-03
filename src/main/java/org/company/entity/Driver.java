@@ -1,13 +1,15 @@
 package org.company.entity;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.annotations.Check;
 
 import java.time.LocalDate;
 
+
 @Entity
 @Table(name = "driver")
+@Data
 public class Driver {
 
     @Id
