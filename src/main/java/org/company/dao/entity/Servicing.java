@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Servicing {
     @Id
     @Column(name = "tabel_number")
-    private Integer tabel_number;
+    private Integer tabelNumber;
 
     @Column(name = "traveled", nullable = false)
     private Integer traveled;

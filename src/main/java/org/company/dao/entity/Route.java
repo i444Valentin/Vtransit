@@ -9,7 +9,7 @@ import lombok.Data;
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer route_id;
+    private Integer routeId;
 
     @ManyToOne
     @JoinColumn(name="departure",referencedColumnName = "id")
