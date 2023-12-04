@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name="vehicle")
+@Table(name = "vehicle")
 @Data
 public class Vehicle {
     @Id
@@ -12,18 +12,17 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tabelNumber;
 
-    @Column(name="gos_num_sign",length = 6)
+    @Column(name = "gos_num_sign", length = 6, nullable = false)
     private String gosNumSign;
 
-    @Column(name="model",length = 25)
+    @Column(name = "model", length = 25, nullable = false)
     private String model;
 
-    @Column(name="vehicle_type",length = 12)
+    @Column(name = "vehicle_type", length = 12, nullable = false)
     private String vehicleType;
 
-    @Column(name = "manufactured",length = 4)
+    @Column(name = "manufactured", length = 4, nullable = false)
     private String manufactured;
-
 
 
 }
