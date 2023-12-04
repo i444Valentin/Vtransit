@@ -7,6 +7,13 @@ import java.io.Serializable;
 import java.sql.*;
 import java.util.Arrays;
 
+/**
+ * Представляет собой тип элемента "Массив строк".
+ * Он необходим для сохранения в базу данных массивов
+ * строк.
+ *
+ * Описание переопределяемых методов смотрите в {@link org.hibernate.usertype.UserType}.
+ */
 public class StringArrayType implements UserType<String[]> {
     @Override
     public int getSqlType() {
@@ -64,6 +71,6 @@ public class StringArrayType implements UserType<String[]> {
 
     @Override
     public String[] assemble(Serializable cached, Object owner) {
-        return new String[0];
+        return (String[]) cached;
     }
 }
