@@ -11,10 +11,9 @@ import java.util.List;
 @Data
 public class Vehicle {
     @Id
-    @PrimaryKeyJoinColumn(name = "tabel_number")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne(cascade = CascadeType.ALL)
-    private Servicing servicing;
+    @Column(name="tabel_number")
+    private Integer tabelNumber;
 
     @Column(name = "gos_num_sign", length = 6, nullable = false)
     private String gosNumSign;

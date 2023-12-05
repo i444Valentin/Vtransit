@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 @Entity
 @Table(name = "license")
 @Data
@@ -12,7 +15,7 @@ public class License {
 
     @Id
     @Column(name = "serial_number")
-    private Integer serialNumber;
+    private Long serialNumber;
 
     @Column(name="gibdd_number",unique = true,length = 4, nullable = false)
     private String gibddNumber;

@@ -12,23 +12,18 @@ import java.time.LocalTime;
 @Table(name="travel")
 @Data
 public class Travel {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @MapsId
-//    private Integer travelNumber;
     @Id
-    @Nonnull
-    @MapsId
-    @OneToOne(cascade = CascadeType.ALL)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "travel_number")
+    private Integer travelNumber;
+
+    @OneToOne(mappedBy="travel",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private Payment payment;
 
     @ManyToOne
     @JoinColumn(name="vehicle", referencedColumnName = "tabel_number")
     private Vehicle vehicle;
-
-//    @OneToOne(mappedBy = "travel",cascade = CascadeType.ALL)
-//    @PrimaryKeyJoinColumn
-//    private Payment payment;
 
     @ManyToOne
     @JoinColumn(name="driver", referencedColumnName = "id")

@@ -3,6 +3,8 @@ package org.company.dao.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "Address")
@@ -28,6 +30,6 @@ public class Address {
     private String house;
 
     @Column(name = "apartment", length = 3)
-    private Integer apartment;
+    private BigDecimal apartment;
 
 }

@@ -11,7 +11,13 @@ import java.time.LocalTime;
 public class Payment {
 
     @Id
+    @Column(name="travel_number")
     private Integer travelNumber;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name= "travel_number")
+    private Travel travel;
 
     @Column(name = "time_count")
     private LocalTime timeCount;
