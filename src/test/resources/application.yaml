@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/VTransit_test
+    username: postgres
+    password: 112233
