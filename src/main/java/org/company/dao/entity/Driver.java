@@ -2,9 +2,8 @@ package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.Check;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -14,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "driver")
 @Data
+@ToString(exclude = "travels")
 public class Driver {
 
     @Id
@@ -41,6 +41,6 @@ public class Driver {
     private License license;
 
     @OneToMany(mappedBy = "driver")
-    private List<Travel> travel = new LinkedList<>();
+    private List<Travel> travels = new LinkedList<>();
 
 }

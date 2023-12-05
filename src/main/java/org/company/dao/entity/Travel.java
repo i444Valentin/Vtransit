@@ -1,7 +1,6 @@
 package org.company.dao.entity;
 
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,7 +20,7 @@ public class Travel {
     @PrimaryKeyJoinColumn
     private Payment payment;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name="vehicle", referencedColumnName = "tabel_number")
     private Vehicle vehicle;
 

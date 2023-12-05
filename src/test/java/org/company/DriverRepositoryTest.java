@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -16,12 +15,12 @@ public class DriverRepositoryTest {
     @Autowired
     DriverRepository driverRepository;
     @Test
-    @Transactional
     public void getDriverById(){
         Driver driver = driverRepository.getReferenceById(3);
         assertNotNull(driver);
         String expectedFirstName = "Иванов";
         String actualFirstName = driver.getFirstName();
         Assertions.assertEquals(expectedFirstName,actualFirstName);
+        System.out.println(driver);
     }
 }

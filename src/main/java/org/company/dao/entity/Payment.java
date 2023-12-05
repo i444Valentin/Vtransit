@@ -2,12 +2,14 @@ package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "payment")
 @Data
+@ToString(exclude = "travel")
 public class Payment {
 
     @Id
