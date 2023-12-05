@@ -4,7 +4,10 @@ spring:
     username: postgres
     password: 112233
     driver-class-name: org.postgresql.Driver
-
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
 server:
   address: localhost
   port: 8080

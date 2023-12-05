@@ -23,6 +23,4 @@ public class License {
     @Column(name = "categories",length = 3, nullable = false)
     @Type(value = org.company.dao.custom_types.StringArrayType.class)
     private String[] categories;
-
-
 }

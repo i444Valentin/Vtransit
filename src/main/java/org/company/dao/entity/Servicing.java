@@ -14,9 +14,8 @@ public class Servicing {
     @Column(name = "tabel_number")
     private Integer tabelNumber;
 
-    @OneToOne(mappedBy = "servicing")
-    @MapsId
-    private Vehicle vehicle;
+//    @OneToOne(mappedBy = "servicing",cascade = CascadeType.ALL)
+//    private Vehicle vehicle;
 
     @Column(name = "traveled", nullable = false)
     private Integer traveled;

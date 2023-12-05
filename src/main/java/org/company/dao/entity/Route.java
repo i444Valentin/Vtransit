@@ -9,6 +9,7 @@ import lombok.Data;
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "route_id")
     private Integer routeId;
 
     @ManyToOne

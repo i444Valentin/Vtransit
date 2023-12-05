@@ -1,6 +1,7 @@
 package org.company.dao.entity;
 
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,13 +12,23 @@ import java.time.LocalTime;
 @Table(name="travel")
 @Data
 public class Travel {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @MapsId
+//    private Integer travelNumber;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer travelNumber;
+    @Nonnull
+    @MapsId
+    @OneToOne(cascade = CascadeType.ALL)
+    private Payment payment;
 
     @ManyToOne
     @JoinColumn(name="vehicle", referencedColumnName = "tabel_number")
     private Vehicle vehicle;
+
+//    @OneToOne(mappedBy = "travel",cascade = CascadeType.ALL)
+//    @PrimaryKeyJoinColumn
+//    private Payment payment;
 
     @ManyToOne
     @JoinColumn(name="driver", referencedColumnName = "id")

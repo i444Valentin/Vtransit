@@ -10,10 +10,8 @@ import java.time.LocalTime;
 @Data
 public class Payment {
 
-    @OneToOne
-    @JoinColumn(name = "travel_number",referencedColumnName = "travel_number")
     @Id
-    private Travel travelNumber;
+    private Integer travelNumber;
 
     @Column(name = "time_count")
     private LocalTime timeCount;

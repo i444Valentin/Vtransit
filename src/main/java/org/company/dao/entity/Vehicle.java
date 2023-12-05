@@ -11,12 +11,9 @@ import java.util.List;
 @Data
 public class Vehicle {
     @Id
-    @Column(name = "tabel_number")
+    @PrimaryKeyJoinColumn(name = "tabel_number")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer tabelNumber;
-
-    @OneToOne(mappedBy = "vehicle",cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(cascade = CascadeType.ALL)
     private Servicing servicing;
 
     @Column(name = "gos_num_sign", length = 6, nullable = false)
@@ -31,6 +28,6 @@ public class Vehicle {
     @Column(name = "manufactured", length = 4, nullable = false)
     private String manufactured;
 
-    @OneToMany(mappedBy = "vehicle")
+    @OneToMany(mappedBy = "vehicle",cascade = CascadeType.PERSIST)
     private List<Travel> travels = new LinkedList<>();
 }

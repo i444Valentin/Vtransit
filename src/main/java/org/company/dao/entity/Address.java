@@ -3,6 +3,7 @@ package org.company.dao.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+
 @Entity
 @Table(name = "Address")
 @Data
