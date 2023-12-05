@@ -3,6 +3,9 @@ package org.company.dao.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Entity
 @Table(name = "vehicle")
 @Data
@@ -11,6 +14,10 @@ public class Vehicle {
     @Column(name = "tabel_number")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tabelNumber;
+
+    @OneToOne(mappedBy = "vehicle",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Servicing servicing;
 
     @Column(name = "gos_num_sign", length = 6, nullable = false)
     private String gosNumSign;
@@ -24,5 +31,6 @@ public class Vehicle {
     @Column(name = "manufactured", length = 4, nullable = false)
     private String manufactured;
 
-
+    @OneToMany(mappedBy = "vehicle")
+    private List<Travel> travels = new LinkedList<>();
 }
