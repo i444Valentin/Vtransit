@@ -16,7 +16,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * Данный класс выполняет последовательное тестирование
+ * сохранения, получения, обновления и удаления записи из базы
+ * данных.
  */
 
 @SpringBootTest
@@ -29,6 +31,8 @@ public class DriverRepositoryTest {
     @Autowired
     LicenseRepository licenseRepository;
 
+    //статические поля с сущностями и id
+
     private static Integer id;
 
     private static Driver driver;
@@ -36,14 +40,15 @@ public class DriverRepositoryTest {
     private static License license;
 
     private static Long licenseNumber;
+
     @BeforeAll
-    public static void prepareData(){
+    public static void prepareData() {
         id = 0;
         license = new License()
                 .setSerialNumber(7414293330L)
                 .setGibddNumber("7772")
                 .setRegion("Московская область")
-                .setCategories(new String[] {"A","B","B1E","C"});
+                .setCategories(new String[]{"A", "B", "B1E", "C"});
         driver = new Driver()
                 .setId(id)
                 .setFirstName("Колеев")
@@ -58,24 +63,24 @@ public class DriverRepositoryTest {
     @Test
     @Order(3)
     @Transactional
-    public void getDriverById(){
+    public void getDriverById() {
         assertTrue(driverRepository.existsById(id));
         Driver driver = driverRepository.getReferenceById(id);
         String expectedFirstName = "Колеев";
         String actualFirstName = driver.getFirstName();
-        Assertions.assertEquals(expectedFirstName,actualFirstName);
+        Assertions.assertEquals(expectedFirstName, actualFirstName);
         System.out.println(driver);
     }
 
     @Test
     @Order(2)
     @Transactional
-    public void getDriverByLicense(){
+    public void getDriverByLicense() {
         Optional<Driver> drivers = driverRepository.findByLicense(licenseNumber);
         assertTrue(drivers.isPresent());
         String expectedFirstName = "Колеев";
         String actualFirstName = drivers.get().getFirstName();
-        Assertions.assertEquals(expectedFirstName,actualFirstName);
+        Assertions.assertEquals(expectedFirstName, actualFirstName);
         System.out.println(drivers);
     }
 
@@ -83,14 +88,14 @@ public class DriverRepositoryTest {
     @Transactional
     @Order(1)
     @Commit
-    public void saveNewDriverAndCheck(){
+    public void saveNewDriverAndCheck() {
         License licenseIn = licenseRepository.save(license);
         Driver driver1 = driverRepository.save(driver);
         Driver gotDriver = driverRepository.getReferenceById(driver1.getId());
         assertNotNull(gotDriver);
         String expectedFirstName = "Колеев";
         String actualFirstName = gotDriver.getFirstName();
-        Assertions.assertEquals(expectedFirstName,actualFirstName);
+        Assertions.assertEquals(expectedFirstName, actualFirstName);
         System.out.println(gotDriver);
         driver = gotDriver;
         license = licenseIn;
@@ -101,7 +106,7 @@ public class DriverRepositoryTest {
     @Transactional
     @Order(4)
     @Commit
-    public void updateDriverAndCheck(){
+    public void updateDriverAndCheck() {
         License licenseIn = license;
         Driver driverIn = driver;
         license.setGibddNumber("8777")
@@ -116,7 +121,7 @@ public class DriverRepositoryTest {
         assertNotNull(gotDriver);
         String expectedFirstName = "Рябова";
         String actualFirstName = gotDriver.getFirstName();
-        Assertions.assertEquals(expectedFirstName,actualFirstName);
+        Assertions.assertEquals(expectedFirstName, actualFirstName);
         System.out.println(gotDriver);
     }
 
@@ -124,7 +129,7 @@ public class DriverRepositoryTest {
     @Transactional
     @Order(5)
     @Commit
-    public void deleteDriverAndCheck(){
+    public void deleteDriverAndCheck() {
         Driver driver = driverRepository.getReferenceById(id);
         License license = licenseRepository.getReferenceById(id);
         licenseRepository.delete(license);
