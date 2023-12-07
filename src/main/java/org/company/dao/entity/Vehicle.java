@@ -2,7 +2,9 @@ package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "vehicle")
 @Data
+@Accessors(chain = true)
 @ToString(exclude = "travels")
 public class Vehicle {
     @Id
@@ -17,7 +20,11 @@ public class Vehicle {
     @Column(name="tabel_number")
     private Integer tabelNumber;
 
-    @Column(name = "gos_num_sign", length = 6, nullable = false)
+    @OneToOne(mappedBy="vehicle",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Servicing servicing;
+
+    @Column(name = "gos_num_sign", length = 6, nullable = false,unique = true)
     private String gosNumSign;
 
     @Column(name = "model", length = 25, nullable = false)

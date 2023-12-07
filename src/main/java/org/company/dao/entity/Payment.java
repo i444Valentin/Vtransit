@@ -3,12 +3,15 @@ package org.company.dao.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "payment")
 @Data
+@Accessors(chain = true)
 @ToString(exclude = "travel")
 public class Payment {
 
@@ -28,12 +31,12 @@ public class Payment {
     private Integer travelled;
 
     @Column(name = "bonus")
-    private Double bonus;
+    private BigDecimal bonus;
 
     @Column(name = "tariff_time")
-    private Double tariffTime;
+    private BigDecimal tariffTime;
 
     @Column(name = "tariff_distance")
-    private Double tariffDistance;
+    private BigDecimal tariffDistance;
 
 }

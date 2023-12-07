@@ -2,6 +2,9 @@ package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Check;
 
 import java.time.LocalDate;
@@ -9,13 +12,18 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "servicing")
 @Data
+@Accessors(chain = true)
+@ToString(exclude = "vehicle")
+@EqualsAndHashCode(exclude = "vehicle")
 public class Servicing {
     @Id
     @Column(name = "tabel_number")
     private Integer tabelNumber;
 
-//    @OneToOne(mappedBy = "servicing",cascade = CascadeType.ALL)
-//    private Vehicle vehicle;
+    @OneToOne
+    @MapsId
+    @JoinColumn(name= "tabel_number")
+    private Vehicle vehicle;
 
     @Column(name = "traveled", nullable = false)
     private Integer traveled;

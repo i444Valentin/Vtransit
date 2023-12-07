@@ -3,6 +3,7 @@ package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import java.math.BigInteger;
 
 @Entity
 @Table(name = "license")
+@Accessors(chain = true)
 @Data
 public class License {
 

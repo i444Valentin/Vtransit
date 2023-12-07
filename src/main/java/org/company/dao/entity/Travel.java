@@ -3,12 +3,14 @@ package org.company.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Table(name="travel")
+@Accessors(chain=true)
 @Data
 public class Travel {
     @Id

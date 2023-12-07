@@ -1,8 +1,10 @@
 package org.company.dao.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Check;
 
 import java.time.LocalDate;
@@ -13,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "driver")
 @Data
+@Accessors(chain = true)
 @ToString(exclude = "travels")
 public class Driver {
 
